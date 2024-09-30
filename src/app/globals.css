@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-text {
+  background: linear-gradient(to bottom, #3b82f6, #1e40af);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(59, 130, 246, 0.1);
+}
+
+.title-glow {
+  filter: drop-shadow(0 0 0.75rem rgba(59, 130, 246, 0.5));
+}
+
+body {
+  @apply antialiased;
+}
+
+.font-sfmono {
+  font-family: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.highlight {
+  background-color: #feca57;
+  border: 2px solid #ff6b6b;
+  border-radius: 0.25rem;
+  padding: 0.1rem 0.3rem;
+}
+
+.cursor-none {
+  cursor: none;
+}
+

@@ -12,26 +12,19 @@ export default function Home() {
   const [error, setError] = useState("")
   const [copied, setCopied] = useState(false)
 
-  const handleShorten = async () => {
-    try {
-      const response = await fetch('/api/shorten', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ url }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Errore nella richiesta')
-      }
-
-      const data = await response.json()
-      setShortUrl(`http://${data.shortUrl}`)
-      setError("")
-    } catch (err) {
-      setError("Si è verificato un errore durante l'accorciamento dell'URL")
-      console.error(err)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const response = await fetch('/api/shorten', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    })
+    const data = await response.json()
+    if (data.id) {
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || window.location.origin
+      const shortUrl = `${baseUrl}/${data.id}`
+      setShortUrl(shortUrl)
+      console.log('URL corto generato:', shortUrl)
     }
   }
 
@@ -61,7 +54,7 @@ export default function Home() {
             className="text-gray-800 border-none focus:ring-2 focus:ring-blue-300 rounded-full flex-grow"
           />
           <Button 
-            onClick={handleShorten}
+            onClick={handleSubmit}
             className={`rounded-full transition-colors duration-300 ${
               url ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-300 hover:bg-gray-400'
             } text-white font-bold py-2 px-6`}

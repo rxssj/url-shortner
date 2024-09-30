@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { nanoid } from 'nanoid'
 
-// Questo oggetto simula un database in memoria
 declare global {
   var urlDatabase: { [key: string]: string }
 }
@@ -23,9 +22,10 @@ export default function handler(
     const id = nanoid(6) 
     global.urlDatabase[id] = url
 
-    const shortUrl = `${req.headers.host}/${id}`
+    console.log(`URL salvato: ${id} -> ${url}`);
+    console.log(`Database attuale:`, global.urlDatabase);
 
-    return res.status(200).json({ shortUrl })
+    return res.status(200).json({ id })
   } else {
     res.setHeader('Allow', ['POST'])
     res.status(405).end(`Metodo ${req.method} Non Permesso`)

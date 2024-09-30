@@ -20,7 +20,9 @@ export default function handler(
     }
 
     const id = nanoid(6) 
-    global.urlDatabase[id] = url
+    console.log('Database prima dell\'inserimento:', global.urlDatabase);
+    global.urlDatabase[id] = url;
+    console.log('Database dopo l\'inserimento:', global.urlDatabase);
 
     console.log(`URL salvato: ${id} -> ${url}`);
     console.log(`Database attuale:`, global.urlDatabase);

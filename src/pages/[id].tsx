@@ -1,4 +1,6 @@
 import { GetServerSideProps } from 'next'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params as { id: string }
@@ -11,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const originalUrl = urlDatabase[id]
 
   if (originalUrl) {
-    console.log(`Reindirizzamento a: ${originalUrl}`);
+    console.log(`Reindirizzamento a: ${originalUrl}`); 
     return {
       redirect: {
         destination: originalUrl,
@@ -21,11 +23,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   console.log(`URL non trovato per ID: ${id}`); 
-  return {
-    notFound: true,
-  }
+  return { notFound: true }
 }
 
 export default function Redirect() {
-  return null
+  return <div>Reindirizzamento...</div>
 }

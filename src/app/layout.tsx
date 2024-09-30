@@ -14,15 +14,6 @@ export const metadata: Metadata = {
     locale: 'it_IT',
     type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Accorciatore URL | Trasforma i tuoi link lunghi',
-    description: 'Accorcia facilmente i tuoi URL lunghi con il nostro strumento gratuito. Crea link corti e gestibili in pochi secondi.',
-    images: ['https://tuo-dominio.com/twitter-image.jpg'],
-  },
-  icons: {
-    icon: '/favicon.png',
-  },
 }
 
 export default function RootLayout({

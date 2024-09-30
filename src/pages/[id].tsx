@@ -22,7 +22,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-// Questa funzione non verrà mai chiamata, ma è necessaria per TypeScript
 export default function Redirect() {
   return null
 }

@@ -20,7 +20,7 @@ export default function handler(
       return res.status(400).json({ error: 'URL mancante' })
     }
 
-    const id = nanoid(6) // Genera un ID unico di 6 caratteri
+    const id = nanoid(6) 
     global.urlDatabase[id] = url
 
     const shortUrl = `${req.headers.host}/${id}`
